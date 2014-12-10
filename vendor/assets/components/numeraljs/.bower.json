@@ -1,0 +1,28 @@
+{
+  "name": "numeral",
+  "repo": "adamwdraper/Numeral-js",
+  "version": "1.5.5",
+  "description": "Format and manipulate numbers.",
+  "keywords": [
+    "numeral",
+    "number",
+    "format",
+    "time",
+    "money",
+    "percentage"
+  ],
+  "scripts": [
+    "numeral.js"
+  ],
+  "main": "numeral.js",
+  "homepage": "https://github.com/ringe/Numeral-js",
+  "_release": "1.5.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.5.5",
+    "commit": "73f2f93a08f780826b15095b84870dd95f70c6d0"
+  },
+  "_source": "git://github.com/ringe/Numeral-js.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/ringe/Numeral-js.git"
+}
