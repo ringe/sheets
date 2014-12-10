@@ -1,0 +1,25 @@
+{
+  "name": "sheets",
+  "version": "0.0.1",
+  "authors": [
+    "Runar Ingebrigtsen <runar@voit.no>"
+  ],
+  "description": "Sheets rails engine",
+  "license": "MIT",
+  "homepage": "http://github.com/ringe/sheets/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1",
+    "handsontable": "~0.12",
+    "numeraljs": "git://github.com/ringe/Numeral-js.git"
+  },
+  "directory": "vendor/assets/components"
+}
