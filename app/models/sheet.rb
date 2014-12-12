@@ -86,16 +86,17 @@ class Sheet < ActiveRecord::Base
   def move_row(pos)
     from = pos[:from].to_i
     dest = pos[:dest].to_i
+    moving = nil
 
     # Moving down
     if dest > from
       rws = rows.where(position: from..dest)
-      rws.each do |col|
-        if col.position == from
-          moving = col
+      rws.each do |row|
+        if row.position == from
+          moving = row
           moving.position = -1
         else
-          col.position -= 1
+          row.position -= 1
         end
       end
       moving.position = dest
@@ -103,12 +104,12 @@ class Sheet < ActiveRecord::Base
     # Moving up
     else
       rws = rows.where(position: dest..from)
-      rws.each do |col|
-        if col.position == from
-          moving = col
+      rws.each do |row|
+        if row.position == from
+          moving = row
           moving.position = -1
         else
-          col.position += 1
+          row.position += 1
         end
       end
       moving.position = dest

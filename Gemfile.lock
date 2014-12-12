@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sheets (0.0.1)
+    sheets (0.2.2)
       best_in_place (~> 3.0)
       rails (~> 4.1.8)
       rubyXL (~> 3.3)

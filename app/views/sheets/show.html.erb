@@ -53,6 +53,8 @@
       afterRowMove: function(position, destination) {
         <%= send_change(@sheet, "change: 'move_row', from: position, dest: destination") %>
       },
+
+      // Remove columns/rows
       beforeRemoveCol: function () { confirm("Do you really want to delete this column?"); },
       beforeRemoveRow: function () { confirm("Do you really want to delete this row?"); },
       afterRemoveCol: function (position, count) {
@@ -61,6 +63,7 @@
       afterRemoveRow: function (position, count) {
         <%= send_change(@sheet, "change: 'drop_row', at: position, count: count") %>
       },
+
       afterOnCellMouseDown: function (event, coords, td) {
         if (coords.row == -1) {
           console.log(event, coords, td);

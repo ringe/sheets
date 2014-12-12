@@ -28,7 +28,7 @@ class Cell < ActiveRecord::Base
   validates :column_id, :row_id, numericality: { only_integer: true, greater_than: 0 }
   after_save :save_row_change
 
-#  default_scope {joins(:column).order(column)}
+  default_scope {joins(:column).order("columns.position")}
 
   def to_s
     content.to_s

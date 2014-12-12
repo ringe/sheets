@@ -80,7 +80,9 @@ class SheetsController < ApplicationController
     @sheet.move_column(move_params) if params[:change] == "move_column"
     @sheet.drop_row(count_params) if params[:change] == "drop_row"
     @sheet.drop_column(count_params) if params[:change] == "drop_column"
+
     @sheet.update_content(content_params) if params[:change] == "content"
+
     @sheet.update_attributes(sheet_params) if params[:sheet]
 
     respond_to do |format|
