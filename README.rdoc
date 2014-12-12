@@ -6,7 +6,7 @@ This Rails plugin was made to add spreadsheet functionality to an existing Rails
 
 Add the gem to your Gemfile:
 
-  gem 'sheets', git: "git@github.com:ringe/sheets"
+  gem 'sheets', github: "ringe/sheets"
 
 Run the install tasks:
 
