@@ -9,7 +9,7 @@ class Column < ActiveRecord::Base
   validates_with ContentTypeValidator
   validates :position, numericality: { only_integer: true }
 
-  after_save :create_cells, :clear_row_cache
+  after_save :create_cells
 
   default_scope {order(:position)}
 
@@ -43,10 +43,6 @@ class Column < ActiveRecord::Base
   end
 
   private
-  # Save the row when the cell changes
-  def clear_row_cache
-    rows.map(&:clear_cache)
-  end
 
   # Default content type
   def set_content_type

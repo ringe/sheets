@@ -13,16 +13,12 @@ class Row < ActiveRecord::Base
   default_scope {order(:position)}
 
   def to_json
-    Rails.cache.fetch(["row", id, last_change, "_json"]) do
-      { row: { id: id, updated_at: updated_at, cells: to_a } }.to_json
-    end
+    { row: { id: id, updated_at: updated_at, cells: to_a } }.to_json
   end
 
   # Return row as array
   def to_a
-    Rails.cache.fetch(["row", id, last_change, "_cells_array"]) do
-      cells.map(&:to_s)
-    end
+    cells.map(&:to_s)
   end
 
   # Return the cell for a given row
@@ -41,13 +37,6 @@ class Row < ActiveRecord::Base
     if row_changes.empty? or json_diff
       row_changes.create(row_id: id, json: to_json)
     end
-  end
-
-  # Clear cache for this row
-  def clear_cache
-    return false unless json_diff
-    Rails.cache.delete [self, "_json"]
-    Rails.cache.delete [self, "_cells_array"]
   end
 
   # Return a Cell by position on a Column or an attribute by name
