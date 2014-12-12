@@ -1,0 +1,14 @@
+{
+  "name": "handsontable-excel",
+  "homepage": "https://github.com/gurubenka/handsontable-excel",
+  "version": "0.1.3",
+  "_release": "0.1.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.3",
+    "commit": "b338512fbd63d909f075e28f47b09eb2f3ee4602"
+  },
+  "_source": "git://github.com/gurubenka/handsontable-excel.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/gurubenka/handsontable-excel.git"
+}

@@ -1,0 +1,96 @@
+<h1>
+  <%= best_in_place @sheet, :name %>
+</h1>
+
+<%= label_tag "search" %>
+<%= text_field_tag "search_field" %>
+
+<div id="myModal" class="reveal-modal">
+    <h1 id="modal_heading">Formel</h1>
+    <%= form_for edit_sheet_column_path(sheet_id: @sheet.id, id: 9) do |f| %>
+      <%= f.text_field :formula %>
+    <% end %>
+
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="hot"></div>
+
+<script>
+
+
+  var data = <%= @sheet.data.html_safe %>,
+  container = document.getElementById('hot'),
+  autosaveNotification,
+  hot = new Handsontable(container,
+    {
+      data: data,
+      search: {
+        searchResultClass: 'text-info'
+      },
+      minSpareRows: 1,
+      manualRowMove: true,
+      manualColMove: true,
+      rowHeaders: <%= @sheet.row_headers %>,
+      colHeaders: <%= @sheet.column_headers %>,
+      contextMenu: true,
+//      columns: <%# @sheet.columns.to_json.html_safe %>,
+      afterChange: function (change, source) {
+          if (source === 'loadData') {
+            return; //don't save this change
+          }
+          <%= send_change(@sheet, "change: 'content', data: change") %>
+      },
+      afterCreateRow: function (position, count) {
+        <%= send_change(@sheet, "change: 'add_row', at: position, count: count") %>
+      },
+      afterCreateCol: function (position, count) {
+        <%= send_change(@sheet, "change: 'add_column', at: position, count: count") %>
+      },
+      afterColMove: function(position, destination) {
+        <%= send_change(@sheet, "change: 'move_column', from: position, dest: destination") %>
+      },
+      afterRowMove: function(position, destination) {
+        <%= send_change(@sheet, "change: 'move_row', from: position, dest: destination") %>
+      },
+      beforeRemoveCol: function () { confirm("Do you really want to delete this column?"); },
+      beforeRemoveRow: function () { confirm("Do you really want to delete this row?"); },
+      afterRemoveCol: function (position, count) {
+        <%= send_change(@sheet, "change: 'drop_column', at: position, count: count") %>
+      },
+      afterRemoveRow: function (position, count) {
+        <%= send_change(@sheet, "change: 'drop_row', at: position, count: count") %>
+      },
+      afterOnCellMouseDown: function (event, coords, td) {
+        if (coords.row == -1) {
+          console.log(event, coords, td);
+          col = coords.col;
+
+          <%= get_column(@sheet.id, "col") %>
+
+          $('#myModal').reveal({
+               animation: 'fadeAndPop',                   //fade, fadeAndPop, none
+               animationspeed: 300,                       //how fast animtions are
+               closeonbackgroundclick: true,              //if you click background will modal close?
+               dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
+          });
+        }
+      }
+    });
+
+    var onlyExactMatch = function (queryStr, value) {
+      return queryStr.toString() === value.toString();
+    };
+
+    var searchFiled = document.getElementById('search_field');
+    Handsontable.Dom.addEvent(searchFiled,'keyup', function (event) {
+        var queryResult = hot.search.query(this.value);
+        console.log(queryResult);
+        hot.render();
+    });
+    function updateForm(data) {
+        $("#myModal").html(data);
+        console.log(col);
+      };
+</script>
+

@@ -1,0 +1,9 @@
+<h1>Sheets</h1>
+
+<%= render partial: "sheets/sheet_form" %>
+
+<ul>
+<% @sheets.each do |sheet| %>
+  <li><%= link_to sheet.name, sheet %></li>
+<% end %>
+</ul>

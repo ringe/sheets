@@ -3,7 +3,7 @@ class CreateCells < ActiveRecord::Migration
     create_table :cells do |t|
       t.integer :row_id
       t.integer :column_id
-      t.text :content
+      t.string  :content
 
       t.timestamps
     end

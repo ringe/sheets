@@ -1,0 +1,7 @@
+<h1>Formula for column <%= @column.position %></h1>
+
+<%= form_for(sheet_column_path(@column.sheet, @column), method: "patch") do |f| %>
+  <%= f.text_field :formula, name: "formula" %>
+  <%= f.submit "Save" %>
+<% end %>
+

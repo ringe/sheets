@@ -1,0 +1,19 @@
+{
+    "name": "vd42-reveal",
+    "version": "1.0.1",
+    "description": "Reveal: A jQuery Plugin For Modals",
+    "homepage": "http://zurb.com/playground/reveal-modal-plugin",
+    "author": "zurb <https://github.com/zurb>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/VD42/reveal.git"
+    },
+    "keywords": [
+        "reveal"
+    ],
+    "main": "./jquery.reveal.js",
+    "dependencies": {
+        "jquery": ">= 1.7.0"
+    }
+}

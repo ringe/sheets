@@ -1,3 +1,18 @@
 = Sheets
 
+This Rails plugin was made to add spreadsheet functionality to an existing Rails 4 app.
+
+= Usage
+
+Add the gem to your Gemfile:
+
+  gem 'sheets', git: "git@rin.no:sheets"
+
+Run the install tasks:
+
+  $ rake sheets:install
+  $ rake db:migrate
+
+= Other
+
 This project rocks and uses MIT-LICENSE.

@@ -1,0 +1,32 @@
+<%= form_for(@sheet) do |f| %>
+  <% if @sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sheet.errors.count, "error") %> prohibited this sheet from being saved:</h2>
+
+      <ul>
+      <% @sheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>Create empty sheet</h4>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :columns %>
+    <%= f.number_field :column_count %>
+    <%= f.label :rows %>
+    <%= f.number_field :row_count %>
+  </div>
+
+  <h4>or upload one</h4>
+  <div class="field">
+    <%= f.label :sheets_from_file %>
+    <%= f.file_field :sheet %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

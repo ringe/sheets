@@ -3,7 +3,7 @@ class CreateRows < ActiveRecord::Migration
     create_table :rows do |t|
       t.integer :sheet_id
       t.integer :position
-      t.string :heading
+      t.string :header
 
       t.timestamps
     end
