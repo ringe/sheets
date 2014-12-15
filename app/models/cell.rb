@@ -31,6 +31,7 @@ class Cell < ActiveRecord::Base
   default_scope {joins(:column).order("columns.position")}
 
   def to_s
+    return content.to_s.sub(/\./,',') if content.to_s=~/\d\.\d/
     content.to_s
   end
 
