@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.1.8"
+  s.add_dependency "rails", "~> 4.1.11"
+  s.add_dependency "rubyzip", ">= 1.2.1"
   s.add_dependency "rubyXL", "~> 3.3"
   s.add_dependency "best_in_place", "~> 3.0"
 
